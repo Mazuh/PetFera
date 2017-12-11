@@ -1,6 +1,11 @@
 #include <iostream>
 
-int main(){
-    std::cout << "hello there!" << std::endl;
+#include "employee.hpp"
+
+int main()
+{
+    data::EmployeeModel me;
+    me.setName("Marcell");
+    std::cout << "hello there, " << me.getName() << "!" << std::endl;
     return 0;
 }

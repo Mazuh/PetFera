@@ -10,29 +10,40 @@ OBJ_DIR = ./build
 # COMPILING OPTIONS
 CC = g++
 CFLAGS = -Wall -pedantic -ansi -std=c++14 -lm -I$(INC_DIR)
-CFILES = main
+CFILES = main employee
 
-# RULES
+# RULES AHEAD
+
+define ENDL
+
+
+endef
 
 .PHONY: all dir clean
 
-# MAKE THE BINARY EXECUTABLE
 $(APP): all
-	$(CC) $(CFLAGS) -o $(BIN_DIR)/$(@) $(OBJ_DIR)/main.o
-	@echo ":: SUCCESSFULLY DEPLOYED: $(BIN_DIR)/$(@)"
+	@echo ":: DEPLOYING:"
+	$(CC) $(CFLAGS) -o $(BIN_DIR)/$(@) $(OBJ_DIR)/*
+	@echo "============================================="
+	@echo ":: DONE AND READY TO RUN: $(BIN_DIR)/$(@)"
+	@echo "============================================="
 
-# COMPILE ALL DEPENDENCY OBJECTS
 all: dir
+	@echo ":: BUILDING ALL SOURCE FILES:"
 	$(foreach file, $(CFILES),\
 		$(CC) $(CFLAGS)\
 		-c $(SRC_DIR)/$(file).cpp\
-		-o $(OBJ_DIR)/$(file).o\
+		-o $(OBJ_DIR)/$(file).o;\
+		$(ENDL)\
 	)
+	@echo "============================================="
 
-# MAKE DIRECTORY TREE
 dir: clean
+	@echo ":: MAKING DIRECTORIES:"
 	mkdir -p $(BIN_DIR) $(OBJ_DIR)
+	@echo "============================================="
 
-# CLEAN A MAKED DIRECTORY TREE
 clean:
+	@echo ":: CLEANING DIRECTORIES:"
 	rm -rf $(BIN_DIR) $(OBJ_DIR)
+	@echo "============================================="
