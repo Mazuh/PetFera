@@ -2,10 +2,12 @@
 
 #include "employee.hpp"
 
+using data::Employee;
+
 int main()
 {
-    data::Employee me;
+    Employee me = make_employee_model(Employee::CARER, "1");
     me.setName("Marcell");
-    std::cout << "hello there, " << me.getName() << "!" << std::endl;
+    std::cout << me.getName() << " is " << me.getRoleName() << std::endl;
     return 0;
 }
