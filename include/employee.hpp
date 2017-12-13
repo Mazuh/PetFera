@@ -1,5 +1,5 @@
 /**
- * Employees models.
+ * Employee models.
  */
 
 #include <string>
@@ -10,27 +10,40 @@ namespace data
     /**
      * Generic employee model.
      */
-    class EmployeeModel: public Model
+    class Employee: public Model
     {
-        private:
-            std::string name;
-            std::string id;
         public:
+            enum Role
+            {
+                VET,
+                CARER
+            };
             std::string getId();
-            void setId(std::string _id);
+            void setId(std::string id);
             std::string getName();
             void setName(std::string _name);
+            std::string getResume();
+            void setResume(std::string _resume);
+        private:
+            std::string id;
+            std::string name;
+            std::string resume;
     };
 
     /**
-     * Specific employee type.
+     * Specific employee model.
      */
-    class Carer: public EmployeeModel
+    class Vet: public Employee
     {};
 
     /**
-     * Another specific employee type.
+     * Specific employee model.
      */
-    class Vet: public EmployeeModel
+    class Carer: public Employee
     {};
+
+    /**
+     * Employee model factory.
+     */
+    Employee make_employee_model(Employee::Role role, std::string id);
 }

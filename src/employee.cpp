@@ -1,28 +1,28 @@
 #include "employee.hpp"
-using data::EmployeeModel;
+using data::Employee;
 
 #include <string>
 
 std::string
-EmployeeModel::getId()
+Employee::getId()
 {
     return id;
 }
 
 void
-EmployeeModel::setId(std::string _id)
+Employee::setId(std::string _id)
 {
     name = _id;
 }
 
 std::string
-EmployeeModel::getName()
+Employee::getName()
 {
     return name;
 }
 
 void
-EmployeeModel::setName(std::string _name)
+Employee::setName(std::string _name)
 {
     name = _name;
 }

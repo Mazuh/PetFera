@@ -4,7 +4,7 @@
 
 int main()
 {
-    data::EmployeeModel me;
+    data::Employee me;
     me.setName("Marcell");
     std::cout << "hello there, " << me.getName() << "!" << std::endl;
     return 0;
