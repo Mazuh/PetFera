@@ -10,7 +10,7 @@ OBJ_DIR = ./build
 # COMPILING OPTIONS
 CC = g++
 CFLAGS = -Wall -pedantic -ansi -std=c++14 -lm -I$(INC_DIR)
-CFILES = main employee
+CFILES = main employee animal
 
 # RULES AHEAD
 

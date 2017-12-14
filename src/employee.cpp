@@ -1,12 +1,17 @@
+#ifndef EMPLOYEE_HPP
+#define EMPLOYEE_HPP
+
 #include "employee.hpp"
 
 #include <string>
 
-namespace data {
+namespace data
+{
     std::string
     Employee::getRoleName()
     {
-        switch (role){
+        switch (role)
+        {
             case Role::VET:
                 return "Vet";
             case Role::CARER:
@@ -65,7 +70,8 @@ namespace data {
     Employee
     make_employee_model(Employee::Role role, std::string id)
     {
-        switch (role){
+        switch (role)
+        {
             case Employee::Role::VET:
                 return Vet();
             case Employee::Role::CARER:
@@ -75,3 +81,5 @@ namespace data {
         }
     }
 }
+
+#endif

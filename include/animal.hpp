@@ -1,3 +1,5 @@
+#ifndef ANIMAL_HPP
+#define ANIMAL_HPP
 /**
  * Animal models.
  */
@@ -26,21 +28,33 @@ namespace data
                 MALE,
                 FEMALE
             };
-            enum ThreatStatus
-            {
-                OK,
-                THREATENED,
-                EXTINTED
-            };
+            char getSexChar();
+            void setSexByChar(char _sex);
+            Vet getVet();
+            void setVet(Vet _vet);
+            Carer getCarer();
+            void setCarer(Carer _carer);
+            std::string getScientificName();
+            void setScientificName(std::string _scientificName);
+            std::string getCaringName();
+            void setCaringName(std::string _caringName);
+            std::string getOrigin();
+            void setOrigin(std::string _origin);
+            std::string getFeeding();
+            void setFeeding(std::string _feeding);
+            bool isThreatened();
+            void setThreatened(bool _threatened);
+            float getApproximateSizeInM();
+            void setApproximateSizeInM(float _approximateSizeInM);
         private:
             Sex sex;
             Vet vet;
             Carer carer;
-            ThreatStatus threatStatus;
-            std::string cientificName;
+            std::string scientificName;
             std::string caringName;
             std::string origin;
             std::string feeding;
+            bool threatened;
             float approximateSizeInM;
     };
 
@@ -49,6 +63,8 @@ namespace data
      */
     class Anfibian: public Animal
     {
+        public:
+            
         private:
             std::string lastMoulting;
             float moultingsQtt;
@@ -87,3 +103,5 @@ namespace data
      */
     Animal make_animal_model(Animal::Kind kind);
 }
+
+#endif

@@ -1,3 +1,5 @@
+#ifndef ABC_HPP
+#define ABC_HPP
 /**
  * Base classes for data handling.
  */
@@ -78,3 +80,5 @@ namespace data
             virtual void remove(Model) = 0;
     };
 }
+
+#endif
