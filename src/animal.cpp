@@ -1,8 +1,12 @@
+#ifndef ANIMAL_CPP
+#define ANIMAL_CPP
+
 #include "animal.hpp"
 
 #include <string>
+#include <vector>
 
-namespace data
+namespace model
 {
     std::string
     Animal::getKindName()
@@ -52,26 +56,26 @@ namespace data
         }
     }
     
-    Vet
+    Vet*
     Animal::getVet()
     {
         return vet;
     }
     
     void
-    Animal::setVet(Vet _vet)
+    Animal::setVet(Vet* _vet)
     {
         vet = _vet;
     }
     
-    Carer
+    Carer*
     Animal::getCarer()
     {
         return carer;
     }
     
     void
-    Animal::setCarer(Carer _carer)
+    Animal::setCarer(Carer* _carer)
     {
         carer = _carer;
     }
@@ -248,21 +252,84 @@ namespace data
         hair = _hair;
     }
     
-    Animal
-    make_animal_model(Animal::Kind kind)
+    Animal*
+    make_animal(Animal::Kind kind)
     {
         switch (kind)
         {
             case Animal::Kind::ANFIBIAN:
-                return Anfibian();
+                return new Anfibian();
             case Animal::Kind::BIRD:
-                return Bird();
+                return new Bird();
             case Animal::Kind::MAMMAL:
-                return Mammal();
+                return new Mammal();
             case Animal::Kind::REPTILE:
-                return Reptile();
+                return new Reptile();
             default:
-                return Animal();
+                return new Animal();
         }
     }
+/*
+    Repository::Repository()
+    {
+        filename = "unknown_data.csv";
+    }
+
+    Repository::Repository(std::string _filename)
+    {
+        filename = _filename;
+    }
+
+    AnimalRepository::AnimalRepository()
+    {
+        filename = "animals.csv";
+    }
+
+    AnimalRepository::AnimalRepository(std::string _filename)
+    {
+        filename = _filename;
+    }
+
+    QueryResult::QueryResult(std::vector<Model> models)
+    {
+        container = models;
+    }
+
+    void
+    AnimalRepository::add(Model animal)
+    {
+
+    }
+    
+    QueryResult
+    AnimalRepository::getAll()
+    {
+        std::vector<Model> v;
+        return QueryResult(v);
+    }
+    
+    Model
+    AnimalRepository::get(Model animal)
+    {
+        return Animal();
+    }
+    
+    void
+    AnimalRepository::update(Model animal)
+    {
+
+    }
+    
+    void
+    AnimalRepository::remove(Model animal)
+    {
+
+    }
+
+    AnimalRepository::~AnimalRepository()
+    {
+
+    }*/
 }
+
+#endif

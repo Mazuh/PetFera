@@ -1,3 +1,5 @@
+#ifndef EMPLOYEE_HPP
+#define EMPLOYEE_HPP
 /**
  * Employee models.
  */
@@ -5,7 +7,7 @@
 #include <string>
 #include "abc.hpp"
 
-namespace data
+namespace model
 {
     /**
      * Generic employee model.
@@ -53,5 +55,15 @@ namespace data
     /**
      * Employee model factory.
      */
-    Employee make_employee_model(Employee::Role role, std::string id);
+    Employee* make_employee(Employee::Role role, std::string id);
 }
+
+namespace infra
+{
+    class EmployeeRepository: public Repository
+    {
+        
+    };
+}
+
+#endif

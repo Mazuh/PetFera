@@ -8,7 +8,7 @@
 #include "abc.hpp"
 #include "employee.hpp"
 
-namespace data
+namespace model
 {
     /**
      * Generic animal model.
@@ -31,10 +31,10 @@ namespace data
             std::string getKindName();
             char getSexChar();
             void setSexByChar(char _sex);
-            Vet getVet();
-            void setVet(Vet _vet);
-            Carer getCarer();
-            void setCarer(Carer _carer);
+            Vet* getVet();
+            void setVet(Vet* _vet);
+            Carer* getCarer();
+            void setCarer(Carer* _carer);
             std::string getScientificName();
             void setScientificName(std::string _scientificName);
             std::string getCaringName();
@@ -50,8 +50,8 @@ namespace data
         protected:
             Kind kind;
             Sex sex;
-            Vet vet;
-            Carer carer;
+            Vet* vet;
+            Carer* carer;
             std::string scientificName;
             std::string caringName;
             std::string origin;
@@ -123,7 +123,22 @@ namespace data
     /**
      * Animal model factory.
      */
-    Animal make_animal_model(Animal::Kind kind);
+    Animal* make_animal(Animal::Kind kind);
 }
+
+
+/*
+    class AnimalRepository: public Repository
+    {
+        public:
+            AnimalRepository();
+            AnimalRepository(std::string _filename);
+            ~AnimalRepository();
+            virtual void add(Model animal);
+            virtual QueryResult getAll();
+            virtual Model get(Model animal);
+            virtual void update(Model animal);
+            virtual void remove(Model animal);
+    }*/
 
 #endif

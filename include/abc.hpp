@@ -6,7 +6,7 @@
 
 #include <vector>
 
-namespace data
+namespace model
 {
     /**
      * Abstract class for all data object that can be persisted.
@@ -15,35 +15,38 @@ namespace data
     class Model
     {
     };
+}
 
+namespace infra
+{
     /**
      * A read-only models container created by a Repository, wrapping a vector.
      */
     class QueryResult
     {
         private:
-            std::vector<Model> container;
+            std::vector<model::Model*> container;
         public:
             /**
              * Constructor to make a vector as a read-only generic container for Model.
              */
-            QueryResult(std::vector<Model> models);
+            QueryResult(std::vector<model::Model*> models);
             /**
              * Returns the number of elements in the container,
              * i.e. std::distance(begin(), end()). 
              */
-            std::vector<Model>::size_type size();
+            std::vector<model::Model*>::size_type size();
             /**
              * Returns an iterator to the first element of the container.
              * If the container is empty, the returned iterator will be equal to end().
              */
-            std::vector<Model>::iterator begin();
+            std::vector<model::Model*>::iterator begin();
             /**
              * Returns an iterator to the element following the last element of the container.
              * This element acts as a placeholder;
              * attempting to access it results in undefined behavior.
              */
-            std::vector<Model>::iterator end();
+            std::vector<model::Model*>::iterator end();
     };
 
     /**
@@ -55,13 +58,15 @@ namespace data
      */
     class Repository
     {
-        private:
+        protected:
             std::string filename;
         public:
+            Repository();
+            Repository(std::string _filename);
             /**
              * Performs CREATE operation.
              */
-            virtual void add(Model) = 0;
+            virtual void add(model::Model*) = 0;
             /**
              * Performs READ (all) operation.
              */
@@ -69,15 +74,15 @@ namespace data
             /**
              * Performs (a single) READ operation.
              */
-            virtual Model get(Model) = 0;
+            virtual model::Model* get(model::Model*) = 0;
             /**
              * Performs UPDATE operation.
              */
-            virtual void update(Model) = 0;
+            virtual void update(model::Model*) = 0;
             /**
              * Performs DELETE operation.
              */
-            virtual void remove(Model) = 0;
+            virtual void remove(model::Model*) = 0;
     };
 }
 
