@@ -17,7 +17,7 @@ namespace data
             case Role::CARER:
                 return "Carer";
             default:
-                return "NA";
+                return "?";
         }
     }
 

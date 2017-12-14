@@ -28,6 +28,7 @@ namespace data
                 MALE,
                 FEMALE
             };
+            std::string getKindName();
             char getSexChar();
             void setSexByChar(char _sex);
             Vet getVet();
@@ -46,7 +47,8 @@ namespace data
             void setThreatened(bool _threatened);
             float getApproximateSizeInM();
             void setApproximateSizeInM(float _approximateSizeInM);
-        private:
+        protected:
+            Kind kind;
             Sex sex;
             Vet vet;
             Carer carer;
@@ -64,10 +66,14 @@ namespace data
     class Anfibian: public Animal
     {
         public:
-            
+            Anfibian();
+            std::string getLastMoulting();
+            void setLastMoulting(std::string _lastMoulting);
+            int getMoultingsQtt();
+            void setMoultingsQtt(int _moultingsQtt);
         private:
             std::string lastMoulting;
-            float moultingsQtt;
+            int moultingsQtt;
     };
 
     /**
@@ -75,8 +81,14 @@ namespace data
      */
     class Reptile: public Animal
     {
+        public:
+            Reptile();
+            std::string getVenom();
+            void setVenom(std::string _venom);
+            bool isVenomous();
         private:
             std::string venom;
+            bool venomous;
     };
 
     /**
@@ -84,6 +96,12 @@ namespace data
      */
     class Bird: public Animal
     {
+        public:
+            Bird();
+            int getBeakSizeInCm();
+            void setBeakSizeInCm(int _beakSizeInCm);
+            int getWingspanSizeInCm();
+            void setWingspanSizeInCm(int _wingspanSizeInCm);
         private:
             int beakSizeInCm;
             int wingspanSizeInCm;
@@ -94,6 +112,10 @@ namespace data
      */
     class Mammal: public Animal
     {
+        public:
+            Mammal();
+            std::string getHair();
+            void setHair(std::string _hair);
         private:
             std::string hair;
     };

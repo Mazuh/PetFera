@@ -4,6 +4,24 @@
 
 namespace data
 {
+    std::string
+    Animal::getKindName()
+    {
+        switch (kind)
+        {
+            case Kind::ANFIBIAN:
+                return "Anfibian";
+            case Kind::BIRD:
+                return "Bird";
+            case Kind::MAMMAL:
+                return "Mammal";
+            case Kind::REPTILE:
+                return "Reptile";
+            default:
+                return "?";
+        }
+    }
+
     char
     Animal::getSexChar()
     {
@@ -128,6 +146,106 @@ namespace data
     Animal::setApproximateSizeInM(float _approximateSizeInM)
     {
         approximateSizeInM = _approximateSizeInM;
+    }
+
+    Anfibian::Anfibian()
+    {
+        kind = Animal::Kind::ANFIBIAN;
+    }
+
+    std::string
+    Anfibian::getLastMoulting()
+    {
+        return lastMoulting;
+    }
+
+    void
+    Anfibian::setLastMoulting(std::string _lastMoulting)
+    {
+        lastMoulting = _lastMoulting;
+    }
+
+    int
+    Anfibian::getMoultingsQtt()
+    {
+        return moultingsQtt;
+    }
+
+    void
+    Anfibian::setMoultingsQtt(int _moultingsQtt)
+    {
+        moultingsQtt = _moultingsQtt;
+    }
+
+    Reptile::Reptile()
+    {
+        kind = Animal::Kind::REPTILE;
+        venomous = false;
+    }
+
+    std::string
+    Reptile::getVenom()
+    {
+        return venom;
+    }
+
+    void
+    Reptile::setVenom(std::string _venom)
+    {
+        venom = _venom;
+        venomous = true;
+    }
+
+    bool
+    Reptile::isVenomous()
+    {
+        return venomous;
+    }
+
+    Bird::Bird()
+    {
+        kind = Animal::Kind::BIRD;
+    }
+
+    int
+    Bird::getBeakSizeInCm()
+    {
+        return beakSizeInCm;
+    }
+
+    void
+    Bird::setBeakSizeInCm(int _beakSizeInCm)
+    {
+        beakSizeInCm = _beakSizeInCm;
+    }
+
+    int
+    Bird::getWingspanSizeInCm()
+    {
+        return wingspanSizeInCm;
+    }
+
+    void
+    Bird::setWingspanSizeInCm(int _wingspanSizeInCm)
+    {
+        wingspanSizeInCm = _wingspanSizeInCm;
+    }
+
+    Mammal::Mammal()
+    {
+        kind = Animal::Kind::MAMMAL;
+    }
+
+    std::string
+    Mammal::getHair()
+    {
+        return hair;
+    }
+
+    void
+    Mammal::setHair(std::string _hair)
+    {
+        hair = _hair;
     }
     
     Animal
