@@ -11,7 +11,7 @@ DATA_DIR = ./data
 # COMPILING OPTIONS
 CC = g++
 CFLAGS = -g -Wall -pedantic -ansi -std=c++14 -lm -I$(INC_DIR)
-CFILES = main employee animal
+CFILES = main employee animal infra
 
 # RULES AHEAD
 

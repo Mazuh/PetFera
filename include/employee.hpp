@@ -58,12 +58,4 @@ namespace model
     Employee* make_employee(Employee::Role role, std::string id);
 }
 
-namespace infra
-{
-    class EmployeeRepository: public Repository
-    {
-        
-    };
-}
-
 #endif

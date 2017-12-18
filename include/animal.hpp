@@ -126,19 +126,4 @@ namespace model
     Animal* make_animal(Animal::Kind kind);
 }
 
-
-/*
-    class AnimalRepository: public Repository
-    {
-        public:
-            AnimalRepository();
-            AnimalRepository(std::string _filename);
-            ~AnimalRepository();
-            virtual void add(Model animal);
-            virtual QueryResult getAll();
-            virtual Model get(Model animal);
-            virtual void update(Model animal);
-            virtual void remove(Model animal);
-    }*/
-
 #endif

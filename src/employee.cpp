@@ -83,9 +83,4 @@ namespace model
     }
 }
 
-namespace infra
-{
-    //class EmployeeRepository
-}
-
 #endif

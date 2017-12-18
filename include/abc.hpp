@@ -4,6 +4,7 @@
  * Base classes for data handling.
  */
 
+#include <string>
 #include <vector>
 
 namespace model
@@ -24,8 +25,6 @@ namespace infra
      */
     class QueryResult
     {
-        private:
-            std::vector<model::Model*> container;
         public:
             /**
              * Constructor to make a vector as a read-only generic container for Model.
@@ -47,6 +46,8 @@ namespace infra
              * attempting to access it results in undefined behavior.
              */
             std::vector<model::Model*>::iterator end();
+        private:
+            std::vector<model::Model*> container;
     };
 
     /**
@@ -58,8 +59,6 @@ namespace infra
      */
     class Repository
     {
-        protected:
-            std::string filename;
         public:
             Repository();
             Repository(std::string _filename);
@@ -83,6 +82,8 @@ namespace infra
              * Performs DELETE operation.
              */
             virtual void remove(model::Model*) = 0;
+        protected:
+            std::string filename;
     };
 }
 

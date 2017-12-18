@@ -269,67 +269,6 @@ namespace model
                 return new Animal();
         }
     }
-/*
-    Repository::Repository()
-    {
-        filename = "unknown_data.csv";
-    }
-
-    Repository::Repository(std::string _filename)
-    {
-        filename = _filename;
-    }
-
-    AnimalRepository::AnimalRepository()
-    {
-        filename = "animals.csv";
-    }
-
-    AnimalRepository::AnimalRepository(std::string _filename)
-    {
-        filename = _filename;
-    }
-
-    QueryResult::QueryResult(std::vector<Model> models)
-    {
-        container = models;
-    }
-
-    void
-    AnimalRepository::add(Model animal)
-    {
-
-    }
-    
-    QueryResult
-    AnimalRepository::getAll()
-    {
-        std::vector<Model> v;
-        return QueryResult(v);
-    }
-    
-    Model
-    AnimalRepository::get(Model animal)
-    {
-        return Animal();
-    }
-    
-    void
-    AnimalRepository::update(Model animal)
-    {
-
-    }
-    
-    void
-    AnimalRepository::remove(Model animal)
-    {
-
-    }
-
-    AnimalRepository::~AnimalRepository()
-    {
-
-    }*/
 }
 
 #endif

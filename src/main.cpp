@@ -1,11 +1,11 @@
 #include <iostream>
 
+#include "infra.hpp"
 #include "employee.hpp"
 #include "animal.hpp"
 
-using model::Employee;
-using model::Carer;
-using model::Animal;
+using namespace model;
+using namespace infra;
 
 int main()
 {
@@ -17,7 +17,9 @@ int main()
     pet->setCarer(me);
     std::cout << "Pet is a " << pet->getSexChar()
               << " cared by " << pet->getCarer()->getName() << std::endl;
-    //AnimalRepository repo;
-    //repo.add();
+
+    EmployeeRepository repo;
+    repo.add(me);
+
     return 0;
 }
