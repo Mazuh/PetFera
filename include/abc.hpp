@@ -4,6 +4,7 @@
  * Base classes for data handling.
  */
 
+#include <sstream>
 #include <string>
 #include <vector>
 
@@ -84,6 +85,17 @@ namespace infra
             virtual void remove(model::Model*) = 0;
         protected:
             std::string filename;
+    };
+
+    class BufferedLineReaderCSV
+    {
+        public:
+            BufferedLineReaderCSV(std::string line);
+            int nextInteger(char delimeter);
+            double nextFloating(char delimeter);
+            std::string nextString(char delimeter);
+        private:
+            std::istringstream lineStream;
     };
 }
 

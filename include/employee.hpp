@@ -20,7 +20,7 @@ namespace model
                 VET,
                 CARER
             };
-            std::string getRoleName();
+            Role getRole();
             std::string getId();
             void setId(std::string id);
             std::string getName();
@@ -55,7 +55,10 @@ namespace model
     /**
      * Employee model factory.
      */
-    Employee* make_employee(Employee::Role role, std::string id);
+    Employee* make_employee(Employee::Role role);
+
+    Employee::Role stringToEmployeeRole(std::string roleName);
+    std::string employeeRoleToString(Employee::Role role);
 }
 
 #endif

@@ -4,21 +4,14 @@
 #include "employee.hpp"
 
 #include <string>
+#include <iostream>
 
 namespace model
 {
-    std::string
-    Employee::getRoleName()
+    Employee::Role
+    Employee::getRole()
     {
-        switch (role)
-        {
-            case Role::VET:
-                return "Vet";
-            case Role::CARER:
-                return "Carer";
-            default:
-                return "?";
-        }
+        return role;
     }
 
     std::string
@@ -30,7 +23,7 @@ namespace model
     void
     Employee::setId(std::string _id)
     {
-        name = _id;
+        id = _id;
     }
 
     std::string
@@ -54,7 +47,7 @@ namespace model
     void
     Employee::setResume(std::string _resume)
     {
-        name = _resume;
+        resume = _resume;
     }
 
     Vet::Vet()
@@ -67,16 +60,43 @@ namespace model
         role = Role::CARER;
     }
 
-    
-    Employee*
-    make_employee(Employee::Role role, std::string id)
+    Employee::Role
+    stringToEmployeeRole(std::string roleStr)
+    {
+        if (roleStr == "Carer" || roleStr == "CARER" || roleStr == "carer")
+        {
+            return Employee::Role::CARER;
+        }
+        else if (roleStr == "Vet" || roleStr == "VET" || roleStr == "vet")
+        {
+            return Employee::Role::VET;
+        }
+        return Employee::Role::CARER; // TODO: exception
+    }
+
+    std::string
+    employeeRoleToString(Employee::Role role)
     {
         switch (role)
         {
+            case Employee::Role::CARER:
+                return "Carer";
             case Employee::Role::VET:
-                return new Vet();
+                return "Vet";
+            default:
+                return "?";
+        }
+    }
+
+    Employee*
+    make_employee(Employee::Role role)
+    {
+        switch (role)
+        {
             case Employee::Role::CARER:
                 return new Carer();
+            case Employee::Role::VET:
+                return new Vet();
             default:
                 return new Employee();
         }

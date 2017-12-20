@@ -35,6 +35,35 @@ namespace infra
         return container.end();
     }
 
+    BufferedLineReaderCSV::BufferedLineReaderCSV(std::string line)
+    {
+        lineStream = std::istringstream(line);
+    }
+
+    std::string
+    BufferedLineReaderCSV::nextString(char delimiter)
+    {
+        std::string value;
+        std::getline(lineStream, value, delimiter);
+        return value;
+    }
+
+    int
+    BufferedLineReaderCSV::nextInteger(char delimiter)
+    {
+        std::string value;
+        std::getline(lineStream, value, delimiter);
+        return std::atoi(value.c_str());
+    }
+
+    double
+    BufferedLineReaderCSV::nextFloating(char delimiter)
+    {
+        std::string value;
+        std::getline(lineStream, value, delimiter);
+        return std::atof(value.c_str());
+    }
+
     Repository::Repository()
     {
         filename = "unknown_data.csv";
@@ -49,17 +78,18 @@ namespace infra
     modelToCSV(model::Employee* model)
     {
         std::stringstream row;
-        row << model->getId() << ';'
+        row << model::employeeRoleToString(model->getRole()) << ';'
+            << model->getId() << ';'
             << model->getName() << ';'
-            << model->getResume() << ';'
-            << model->getRoleName();
+            << model->getResume();
         return row.str();
     }
 
     void
     EmployeeRepository::add(model::Model* employee)
     {
-        std::ofstream file(filename);
+        std::ofstream file;
+        file.open(filename, std::ofstream::app);
         file << modelToCSV((model::Employee*) employee) << '\n';
         file.close();
     }
@@ -68,6 +98,21 @@ namespace infra
     EmployeeRepository::getAll()
     {
         std::vector<model::Model*> models;
+        std::ifstream file;
+        file.open(filename);
+        std::string row, value;
+        while (std::getline(file, row))
+        {
+            BufferedLineReaderCSV buffer(row);
+            std::string roleStr = buffer.nextString(';');
+            model::Employee::Role role = model::stringToEmployeeRole(roleStr);
+            auto employee = model::make_employee(role);
+            employee->setId(buffer.nextString(';'));
+            employee->setName(buffer.nextString(';'));
+            employee->setResume(buffer.nextString('\n'));
+            models.push_back(employee);
+        }
+        file.close();
         return QueryResult(models);
     }
 
